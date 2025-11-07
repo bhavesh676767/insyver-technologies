@@ -16,7 +16,7 @@ import {
   FaHeart,
   FaTrophy,
   FaEye,
-  FaTarget,
+  FaBullseye,
   FaCog,
   FaChartLine
 } from 'react-icons/fa';
@@ -214,7 +214,7 @@ const About = () => {
               transition={{ duration: 0.8 }}
             >
               <div className="flex items-center mb-6">
-                <FaTarget className="w-8 h-8 text-accent-500 mr-4" />
+                <FaBullseye className="w-8 h-8 text-accent-500 mr-4" />
                 <h2 className="text-3xl font-bold text-text-primary">Our Mission</h2>
               </div>
               <p className="text-lg text-text-secondary leading-relaxed">
