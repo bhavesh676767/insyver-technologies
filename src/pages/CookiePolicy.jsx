@@ -1,7 +1,6 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 
-const CookiePolicy = () => {
+export default function CookiePolicy() {
   const sections = [
     {
       title: "What Are Cookies",
@@ -71,112 +70,82 @@ const CookiePolicy = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background-900">
+    <div className="bg-white dark:bg-gray-950 transition-colors duration-300">
       {/* Hero Section */}
-      <section className="relative py-32 overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-primary-500/20 rounded-full blur-3xl animate-float"></div>
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent-500/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
-        </div>
-
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center"
-          >
-            <h1 className="text-4xl md:text-6xl font-bold text-text-primary mb-6">
-              Cookie
-              <span className="block text-accent-500">Policy</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-text-secondary mb-8 max-w-4xl mx-auto">
-              This policy explains how we use cookies and similar technologies to improve your experience on our website.
-            </p>
-            <div className="text-text-secondary">
-              <p>Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
-            </div>
-          </motion.div>
+      <section className="bg-gradient-to-br from-blue-900 via-blue-800 to-slate-900 dark:from-blue-950 dark:via-blue-900 dark:to-gray-900 text-white py-20 px-6">
+        <div className="max-w-6xl mx-auto">
+          <h1 className="text-5xl font-bold mb-6">Cookie Policy</h1>
+          <p className="text-xl text-gray-300 mb-4 max-w-3xl">
+            This policy explains how we use cookies and similar technologies to improve your experience on our website.
+          </p>
+          <p className="text-gray-400">
+            Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+          </p>
         </div>
       </section>
 
       {/* Cookie Policy Content */}
-      <section className="py-20 bg-background-800">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="mb-12"
-          >
-            <div className="bg-background-900 p-8 rounded-xl border border-primary-700 mb-8">
-              <h2 className="text-2xl font-bold text-text-primary mb-4">Cookie Policy Overview</h2>
-              <p className="text-text-secondary leading-relaxed">
-                This Cookie Policy explains how Insyver Technologies (OPC) Pvt. Ltd. ("we," "our," or "us") uses cookies and similar technologies on our website. By using our website, you consent to the use of cookies in accordance with this policy.
-              </p>
-              <p className="text-text-secondary leading-relaxed mt-4">
-                Cookies are essential for providing you with a personalized and efficient browsing experience. They help us understand how you use our website and allow us to improve our services. You can control your cookie preferences, but please note that disabling certain cookies may affect the functionality of our website.
-              </p>
-            </div>
-          </motion.div>
+      <section className="py-20 px-6 bg-white dark:bg-gray-900">
+        <div className="max-w-4xl mx-auto">
+          {/* Overview */}
+          <div className="bg-gray-50 dark:bg-gray-800 p-8 rounded-lg border border-gray-200 dark:border-gray-700 mb-12">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Cookie Policy Overview</h2>
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+              This Cookie Policy explains how Insyver Technologies (OPC) Pvt. Ltd. ("we," "our," or "us") uses cookies and similar technologies on our website. By using our website, you consent to the use of cookies in accordance with this policy.
+            </p>
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+              Cookies are essential for providing you with a personalized and efficient browsing experience. They help us understand how you use our website and allow us to improve our services. You can control your cookie preferences, but please note that disabling certain cookies may affect the functionality of our website.
+            </p>
+          </div>
 
           {sections.map((section, index) => (
-            <motion.div
+            <div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
-              className="bg-background-900 p-8 rounded-xl border border-primary-700 mb-8"
+              className="bg-gray-50 dark:bg-gray-800 p-8 rounded-lg border border-gray-200 dark:border-gray-700 mb-8"
             >
-              <h2 className="text-2xl font-bold text-text-primary mb-6">{index + 1}. {section.title}</h2>
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">{index + 1}. {section.title}</h2>
               <ul className="space-y-3">
                 {section.content.map((item, itemIndex) => (
-                  <li key={itemIndex} className="flex items-start text-text-secondary">
-                    <span className="text-accent-500 mr-3 mt-1">•</span>
+                  <li key={itemIndex} className="flex items-start text-gray-700 dark:text-gray-300">
+                    <span className="text-blue-600 dark:text-blue-400 mr-3 mt-1 font-bold">•</span>
                     <span className="leading-relaxed">{item}</span>
                   </li>
                 ))}
               </ul>
-            </motion.div>
+            </div>
           ))}
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="bg-background-900 p-8 rounded-xl border border-primary-700 mb-8"
+          <div
+            className="bg-gray-50 dark:bg-gray-800 p-8 rounded-lg border border-gray-200 dark:border-gray-700 mb-8"
           >
-            <h2 className="text-2xl font-bold text-text-primary mb-6">7. Updates to This Policy</h2>
-            <p className="text-text-secondary leading-relaxed mb-4">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">7. Updates to This Policy</h2>
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
               We may update this Cookie Policy from time to time to reflect changes in our practices or for other operational, legal, or regulatory reasons. We will notify you of any material changes by posting the updated policy on our website and updating the "Last updated" date.
             </p>
-            <p className="text-text-secondary leading-relaxed">
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
               Your continued use of our website after any such changes constitutes your acceptance of the updated Cookie Policy. We encourage you to review this policy periodically to stay informed about our cookie practices.
             </p>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="bg-background-900 p-8 rounded-xl border border-primary-700 mb-8"
+          <div
+            className="bg-gray-50 dark:bg-gray-800 p-8 rounded-lg border border-gray-200 dark:border-gray-700 mb-8"
           >
-            <h2 className="text-2xl font-bold text-text-primary mb-6">8. Contact Us</h2>
-            <p className="text-text-secondary leading-relaxed mb-4">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">8. Contact Us</h2>
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
               If you have any questions about this Cookie Policy or our use of cookies, please contact us:
             </p>
-            <div className="bg-primary-800 p-6 rounded-lg">
+            <div className="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-lg border border-blue-200 dark:border-blue-800">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <h3 className="font-semibold text-text-primary mb-2">Insyver Technologies (OPC) Pvt. Ltd.</h3>
-                  <p className="text-text-secondary">
+                  <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Insyver Technologies (OPC) Pvt. Ltd.</h3>
+                  <p className="text-gray-700 dark:text-gray-300">
                     P. NO-02 Laxman Vihar, Phase II<br />
                     New Colony, Gurgaon - 122001<br />
                     Haryana, India
                   </p>
                 </div>
                 <div>
-                  <p className="text-text-secondary">
+                  <p className="text-gray-700 dark:text-gray-300">
                     <strong>Email:</strong> info@insyvertechnologies.com<br />
                     <strong>Phone:</strong> +91 98992 13865<br />
                     <strong>Website:</strong> www.insyvertechnologies.com
@@ -184,23 +153,18 @@ const CookiePolicy = () => {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="bg-accent-500/10 border border-accent-500/30 p-8 rounded-xl"
+          <div
+            className="bg-blue-50 dark:bg-blue-900/20 p-8 rounded-lg border border-blue-200 dark:border-blue-800"
           >
-            <h2 className="text-2xl font-bold text-text-primary mb-4">Cookie Consent</h2>
-            <p className="text-text-secondary leading-relaxed">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Cookie Consent</h2>
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
               By continuing to use our website, you consent to the use of cookies as described in this policy. You can withdraw your consent or modify your cookie preferences at any time by adjusting your browser settings or contacting us directly. However, please note that some features of our website may not function properly without certain cookies.
             </p>
-          </motion.div>
+          </div>
         </div>
       </section>
     </div>
   );
-};
-
-export default CookiePolicy;
+}

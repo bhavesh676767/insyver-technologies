@@ -1,7 +1,6 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 
-const TermsOfService = () => {
+export default function TermsOfService() {
   const sections = [
     {
       title: "Acceptance of Terms",
@@ -113,97 +112,70 @@ const TermsOfService = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background-900">
+    <div className="bg-white dark:bg-gray-950 transition-colors duration-300">
       {/* Hero Section */}
-      <section className="relative py-32 overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-primary-500/20 rounded-full blur-3xl animate-float"></div>
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent-500/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
-        </div>
-
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center"
-          >
-            <h1 className="text-4xl md:text-6xl font-bold text-text-primary mb-6">
-              Terms of
-              <span className="block text-accent-500">Service</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-text-secondary mb-8 max-w-4xl mx-auto">
-              Please read these terms carefully before using our services. By using Insyver Technologies' services, you agree to be bound by these terms.
-            </p>
-            <div className="text-text-secondary">
-              <p>Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
-            </div>
-          </motion.div>
+      <section className="bg-gradient-to-br from-blue-900 via-blue-800 to-slate-900 dark:from-blue-950 dark:via-blue-900 dark:to-gray-900 text-white py-20 px-6">
+        <div className="max-w-6xl mx-auto">
+          <h1 className="text-5xl font-bold mb-6">Terms of Service</h1>
+          <p className="text-xl text-gray-300 mb-4 max-w-3xl">
+            Please read these terms carefully before using our services. By using Insyver Technologies' services, you agree to be bound by these terms.
+          </p>
+          <p className="text-gray-400">
+            Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+          </p>
         </div>
       </section>
 
       {/* Terms Content */}
-      <section className="py-20 bg-background-800">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="mb-12"
-          >
-            <div className="bg-background-900 p-8 rounded-xl border border-primary-700 mb-8">
-              <h2 className="text-2xl font-bold text-text-primary mb-4">Agreement Overview</h2>
-              <p className="text-text-secondary leading-relaxed">
-                These Terms of Service ("Terms") govern your use of the services provided by Insyver Technologies (OPC) Pvt. Ltd. ("Company," "we," "our," or "us"). By accessing or using our services, you agree to be bound by these Terms. If you disagree with any part of these terms, then you may not access our services.
-              </p>
-              <p className="text-text-secondary leading-relaxed mt-4">
-                Our services include but are not limited to technology consulting, network infrastructure, cloud solutions, cybersecurity services, software development, and managed IT services. These terms apply to all users of our services, whether accessed through our website, mobile applications, or other platforms.
-              </p>
-            </div>
-          </motion.div>
+      <section className="py-20 px-6 bg-white dark:bg-gray-900">
+        <div className="max-w-4xl mx-auto">
+          {/* Overview */}
+          <div className="bg-gray-50 dark:bg-gray-800 p-8 rounded-lg border border-gray-200 dark:border-gray-700 mb-12">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Agreement Overview</h2>
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+              These Terms of Service ("Terms") govern your use of the services provided by Insyver Technologies (OPC) Pvt. Ltd. ("Company," "we," "our," or "us"). By accessing or using our services, you agree to be bound by these Terms. If you disagree with any part of these terms, then you may not access our services.
+            </p>
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+              Our services include but are not limited to technology consulting, network infrastructure, cloud solutions, cybersecurity services, software development, and managed IT services. These terms apply to all users of our services, whether accessed through our website, mobile applications, or other platforms.
+            </p>
+          </div>
 
           {sections.map((section, index) => (
-            <motion.div
+            <div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
-              className="bg-background-900 p-8 rounded-xl border border-primary-700 mb-8"
+              className="bg-gray-50 dark:bg-gray-800 p-8 rounded-lg border border-gray-200 dark:border-gray-700 mb-8"
             >
-              <h2 className="text-2xl font-bold text-text-primary mb-6">{index + 1}. {section.title}</h2>
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">{index + 1}. {section.title}</h2>
               <ul className="space-y-3">
                 {section.content.map((item, itemIndex) => (
-                  <li key={itemIndex} className="flex items-start text-text-secondary">
-                    <span className="text-accent-500 mr-3 mt-1">•</span>
+                  <li key={itemIndex} className="flex items-start text-gray-700 dark:text-gray-300">
+                    <span className="text-blue-600 dark:text-blue-400 mr-3 mt-1 font-bold">•</span>
                     <span className="leading-relaxed">{item}</span>
                   </li>
                 ))}
               </ul>
-            </motion.div>
+            </div>
           ))}
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="bg-background-900 p-8 rounded-xl border border-primary-700 mb-8"
+          <div
+            className="bg-gray-50 dark:bg-gray-800 p-8 rounded-lg border border-gray-200 dark:border-gray-700 mb-8"
           >
-            <h2 className="text-2xl font-bold text-text-primary mb-6">12. Contact Information</h2>
-            <p className="text-text-secondary leading-relaxed mb-4">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">12. Contact Information</h2>
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
               If you have any questions about these Terms of Service, please contact us:
             </p>
-            <div className="bg-primary-800 p-6 rounded-lg">
+            <div className="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-lg border border-blue-200 dark:border-blue-800">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <h3 className="font-semibold text-text-primary mb-2">Insyver Technologies (OPC) Pvt. Ltd.</h3>
-                  <p className="text-text-secondary">
+                  <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Insyver Technologies (OPC) Pvt. Ltd.</h3>
+                  <p className="text-gray-700 dark:text-gray-300">
                     P. NO-02 Laxman Vihar, Phase II<br />
                     New Colony, Gurgaon - 122001<br />
                     Haryana, India
                   </p>
                 </div>
                 <div>
-                  <p className="text-text-secondary">
+                  <p className="text-gray-700 dark:text-gray-300">
                     <strong>Email:</strong> info@insyvertechnologies.com<br />
                     <strong>Phone:</strong> +91 98992 13865<br />
                     <strong>Website:</strong> www.insyvertechnologies.com
@@ -211,23 +183,18 @@ const TermsOfService = () => {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="bg-accent-500/10 border border-accent-500/30 p-8 rounded-xl"
+          <div
+            className="bg-blue-50 dark:bg-blue-900/20 p-8 rounded-lg border border-blue-200 dark:border-blue-800"
           >
-            <h2 className="text-2xl font-bold text-text-primary mb-4">Acceptance of Terms</h2>
-            <p className="text-text-secondary leading-relaxed">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Acceptance of Terms</h2>
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
               By using our services, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service. If you do not agree to these terms, please discontinue use of our services immediately. Your continued use of our services constitutes acceptance of these terms and any future modifications.
             </p>
-          </motion.div>
+          </div>
         </div>
       </section>
     </div>
   );
-};
-
-export default TermsOfService;
+}

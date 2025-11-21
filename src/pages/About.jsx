@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import {
   FaRocket,
@@ -21,486 +20,309 @@ import {
   FaChartLine
 } from 'react-icons/fa';
 
-const About = () => {
-  const coreValues = [
-    {
-      icon: <FaShieldAlt className="w-8 h-8" />,
-      title: "Security First",
-      description: "We prioritize the security and protection of our clients' data and systems above all else."
-    },
-    {
-      icon: <FaLightbulb className="w-8 h-8" />,
-      title: "Innovation",
-      description: "We continuously explore and implement cutting-edge technologies to stay ahead of the curve."
-    },
-    {
-      icon: <FaHandshake className="w-8 h-8" />,
-      title: "Partnership",
-      description: "We build long-term relationships with our clients, acting as trusted technology partners."
-    },
-    {
-      icon: <FaHeart className="w-8 h-8" />,
-      title: "Excellence",
-      description: "We strive for excellence in every project, delivering high-quality solutions that exceed expectations."
-    },
-    {
-      icon: <FaUsers className="w-8 h-8" />,
-      title: "Collaboration",
-      description: "We work closely with our clients to understand their needs and co-create solutions."
-    }
-  ];
-
-  const approach = [
-    {
-      step: "01",
-      title: "Discovery & Analysis",
-      description: "We begin by thoroughly understanding your business needs, challenges, and objectives through comprehensive analysis."
-    },
-    {
-      step: "02",
-      title: "Strategic Planning",
-      description: "Based on our findings, we develop a customized technology roadmap aligned with your business goals."
-    },
-    {
-      step: "03",
-      title: "Implementation",
-      description: "Our expert team executes the plan with precision, using industry best practices and cutting-edge technologies."
-    },
-    {
-      step: "04",
-      title: "Support & Optimization",
-      description: "We provide ongoing support and continuously optimize solutions to ensure maximum performance and ROI."
-    }
-  ];
-
-  const stats = [
-    { number: "500+", label: "Projects Completed" },
-    { number: "15+", label: "Years Experience" },
-    { number: "98%", label: "Client Satisfaction" },
-    { number: "24/7", label: "Support Available" }
-  ];
-
+export default function About() {
   return (
-    <div className="min-h-screen bg-background-900">
+    <div className="bg-white dark:bg-gray-950 transition-colors duration-300">
       {/* Hero Section */}
-      <section className="relative py-32 overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-primary-500/20 rounded-full blur-3xl animate-float"></div>
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent-500/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
-        </div>
-
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center"
-          >
-            <h1 className="text-4xl md:text-6xl font-bold text-text-primary mb-6">
-              Innovating the Future of
-              <span className="block text-accent-500">Digital Infrastructure</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-text-secondary mb-8 max-w-4xl mx-auto">
-              Since our inception, Insyver Technologies has been at the forefront of technological innovation,
-              helping businesses transform and thrive in the digital age.
-            </p>
-          </motion.div>
+      <section className="bg-gradient-to-br from-blue-900 via-blue-800 to-slate-900 dark:from-blue-950 dark:via-blue-900 dark:to-gray-900 text-white py-20 px-6">
+        <div className="max-w-6xl mx-auto">
+          <h1 className="text-5xl font-bold mb-6">Innovating the Future of Digital Infrastructure</h1>
+          <p className="text-xl text-gray-300 mb-8 max-w-3xl">
+            We're more than a technology company — we're your strategic partner in digital evolution, 
+            enabling enterprises to grow smarter, faster, and safer in an ever-changing digital world.
+          </p>
+          <div className="flex gap-4 flex-wrap">
+            <Link to="/about" className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold transition">
+              Learn More
+            </Link>
+            <Link to="/services" className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-blue-900 px-8 py-3 rounded-lg font-semibold transition">
+              Explore Services
+            </Link>
+          </div>
         </div>
       </section>
 
       {/* Our Story Section */}
-      <section className="py-20 bg-background-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <h2 className="text-3xl md:text-4xl font-bold text-text-primary mb-6">Our Story</h2>
-              <div className="space-y-4 text-lg text-text-secondary">
-                <p>
-                  Founded in 2009, Insyver Technologies began as a small consultancy focused on network infrastructure.
-                  Over the years, we've evolved into a comprehensive technology solutions provider, serving clients
-                  across multiple industries and geographies.
-                </p>
-                <p>
-                  Our journey has been driven by a passion for technology and a commitment to helping businesses
-                  leverage digital tools to achieve their goals. We've witnessed firsthand how the right technology
-                  can transform operations, enhance customer experiences, and create new opportunities for growth.
-                </p>
-                <p>
-                  Today, we stand as a trusted partner for enterprises seeking to navigate the complexities of
-                  digital transformation, offering end-to-end solutions that combine technical expertise with
-                  deep industry knowledge.
-                </p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              className="grid grid-cols-2 gap-6"
-            >
-              {stats.map((stat, index) => (
-                <div key={index} className="bg-background-900 p-6 rounded-xl border border-primary-700 text-center">
-                  <div className="text-3xl md:text-4xl font-bold text-accent-500 mb-2">{stat.number}</div>
-                  <div className="text-text-secondary">{stat.label}</div>
-                </div>
-              ))}
-            </motion.div>
+      <section className="py-16 px-6 bg-white dark:bg-gray-900">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-12">Our Story</h2>
+          <div className="space-y-6 text-lg text-gray-700 dark:text-gray-300">
+            <p>
+              Founded in Gurgaon, India, Insyver Technologies (OPC) Pvt. Ltd. was established with a singular goal — 
+              to redefine the standards of ICT, cloud, and cybersecurity solutions for modern enterprises.
+            </p>
+            <p>
+              With technology rapidly transforming industries, we saw the need for a company that could integrate 
+              intelligence, scalability, and innovation into every layer of a business's digital infrastructure.
+            </p>
+            <p>
+              From our humble beginnings as a specialized IT consultancy, we've grown into a multidisciplinary ICT powerhouse, 
+              delivering network design, cloud migration, web development, and managed services to clients across India and around the world.
+            </p>
           </div>
         </div>
       </section>
 
       {/* Who We Are Section */}
-      <section className="py-20 bg-background-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-text-primary mb-6">Who We Are</h2>
-            <p className="text-xl text-text-secondary max-w-3xl mx-auto">
-              We are a team of passionate technology professionals dedicated to delivering innovative solutions
-              that drive business success.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                icon: <FaUsers className="w-12 h-12" />,
-                title: "Expert Team",
-                description: "Our certified professionals bring decades of combined experience in technology consulting and implementation."
-              },
-              {
-                icon: <FaRocket className="w-12 h-12" />,
-                title: "Innovation Leaders",
-                description: "We stay at the forefront of technological advancements, continuously exploring new ways to solve complex challenges."
-              },
-              {
-                icon: <FaGlobe className="w-12 h-12" />,
-                title: "Global Perspective",
-                description: "While based in India, we serve clients worldwide, bringing diverse insights and international best practices."
-              }
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
-                className="bg-background-800 p-8 rounded-xl border border-primary-700 hover:border-accent-500 transition-all duration-300"
-              >
-                <div className="text-accent-500 mb-6">{item.icon}</div>
-                <h3 className="text-xl font-semibold text-text-primary mb-4">{item.title}</h3>
-                <p className="text-text-secondary">{item.description}</p>
-              </motion.div>
-            ))}
+      <section className="py-16 px-6 bg-gray-50 dark:bg-gray-800">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-8">Who We Are</h2>
+          <p className="text-lg text-gray-700 dark:text-gray-300 mb-8">
+            At Insyver Technologies, we are a team of engineers, cybersecurity specialists, software architects, 
+            and digital innovators driven by a shared purpose — to make technology simpler, smarter, and more secure for every business.
+          </p>
+          <p className="text-lg text-gray-700 dark:text-gray-300 mb-12">
+            We design future-ready solutions that help organizations unlock efficiency, enhance security, 
+            and achieve sustainable digital transformation.
+          </p>
+          
+          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Our Expertise Spans</h3>
+          <div className="grid md:grid-cols-2 gap-4">
+            <div className="flex items-center gap-3">
+              <span className="text-blue-600 dark:text-blue-400 text-xl">✓</span>
+              <span className="text-gray-700 dark:text-gray-300">ICT & Enterprise Network Infrastructure</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <span className="text-blue-600 dark:text-blue-400 text-xl">✓</span>
+              <span className="text-gray-700 dark:text-gray-300">Cloud Solutions & Hosting</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <span className="text-blue-600 dark:text-blue-400 text-xl">✓</span>
+              <span className="text-gray-700 dark:text-gray-300">Cybersecurity & Ethical Hacking</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <span className="text-blue-600 dark:text-blue-400 text-xl">✓</span>
+              <span className="text-gray-700 dark:text-gray-300">Software Development</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <span className="text-blue-600 dark:text-blue-400 text-xl">✓</span>
+              <span className="text-gray-700 dark:text-gray-300">ERP/CRM & Business Analytics</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <span className="text-blue-600 dark:text-blue-400 text-xl">✓</span>
+              <span className="text-gray-700 dark:text-gray-300">Managed IT & 24/7 Consultancy</span>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Mission & Vision */}
-      <section className="py-20 bg-background-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <div className="flex items-center mb-6">
-                <FaBullseye className="w-8 h-8 text-accent-500 mr-4" />
-                <h2 className="text-3xl font-bold text-text-primary">Our Mission</h2>
-              </div>
-              <p className="text-lg text-text-secondary leading-relaxed">
-                To empower businesses with intelligent technology solutions that drive innovation, enhance efficiency,
-                and create sustainable competitive advantages in the digital age. We are committed to delivering
-                transformative solutions that help our clients navigate the complexities of digital transformation.
+      {/* Mission & Vision Section */}
+      <section className="py-16 px-6 bg-white dark:bg-gray-900">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-12 mb-16">
+            <div className="bg-gradient-to-br from-blue-50 dark:from-blue-900/20 to-blue-100 dark:to-blue-800/20 p-8 rounded-lg">
+              <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Our Mission</h3>
+              <p className="text-lg text-gray-700 dark:text-gray-300 mb-4">
+                To empower businesses with intelligent, secure, and scalable digital systems that drive growth, 
+                innovation, and resilience in an ever-evolving technological landscape.
               </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <div className="flex items-center mb-6">
-                <FaEye className="w-8 h-8 text-accent-500 mr-4" />
-                <h2 className="text-3xl font-bold text-text-primary">Our Vision</h2>
-              </div>
-              <p className="text-lg text-text-secondary leading-relaxed">
-                To be the leading technology partner for enterprises worldwide, recognized for delivering
-                transformative solutions that shape the future of digital business. We envision a world where
-                technology seamlessly integrates with business strategy to create unprecedented value.
+              <p className="text-gray-700 dark:text-gray-300">
+                We believe technology should not just serve — it should lead transformation. 
+                Every solution we create is aligned with business outcomes, data security, and long-term scalability.
               </p>
-            </motion.div>
+            </div>
+            <div className="bg-gradient-to-br from-slate-50 dark:from-slate-800/30 to-slate-100 dark:to-slate-700/30 p-8 rounded-lg">
+              <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Our Vision</h3>
+              <p className="text-lg text-gray-700 dark:text-gray-300 mb-4">
+                To be a global leader in integrated ICT and enterprise digital solutions, 
+                known for innovation, reliability, and integrity.
+              </p>
+              <p className="text-gray-700 dark:text-gray-300">
+                We envision a connected future where enterprises harness the full power of intelligent systems 
+                to shape industries, economies, and communities for the better.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Core Values */}
-      <section className="py-20 bg-background-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-text-primary mb-6">Our Core Values</h2>
-            <p className="text-xl text-text-secondary max-w-3xl mx-auto">
-              These principles guide everything we do and shape our relationships with clients and partners.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {coreValues.map((value, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
-                className="bg-background-800 p-8 rounded-xl border border-primary-700 hover:border-accent-500 transition-all duration-300"
-              >
-                <div className="text-accent-500 mb-6">{value.icon}</div>
-                <h3 className="text-xl font-semibold text-text-primary mb-4">{value.title}</h3>
-                <p className="text-text-secondary">{value.description}</p>
-              </motion.div>
-            ))}
+      {/* Core Values Section */}
+      <section className="py-16 px-6 bg-gray-50 dark:bg-gray-800">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-12">Our Core Values</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="bg-white dark:bg-gray-900 p-8 rounded-lg border border-gray-200 dark:border-gray-700 hover:shadow-lg dark:hover:shadow-2xl transition">
+              <FaShieldAlt className="text-4xl text-blue-600 dark:text-blue-400 mb-4" />
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Integrity</h3>
+              <p className="text-gray-700 dark:text-gray-300">
+                We build trust through transparency, accountability, and uncompromised ethical standards.
+              </p>
+            </div>
+            <div className="bg-white dark:bg-gray-900 p-8 rounded-lg border border-gray-200 dark:border-gray-700 hover:shadow-lg dark:hover:shadow-2xl transition">
+              <FaRocket className="text-4xl text-blue-600 dark:text-blue-400 mb-4" />
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Innovation</h3>
+              <p className="text-gray-700 dark:text-gray-300">
+                We thrive on innovation — exploring emerging technologies to design solutions that redefine what's possible.
+              </p>
+            </div>
+            <div className="bg-white dark:bg-gray-900 p-8 rounded-lg border border-gray-200 dark:border-gray-700 hover:shadow-lg dark:hover:shadow-2xl transition">
+              <FaHandshake className="text-4xl text-blue-600 dark:text-blue-400 mb-4" />
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Partnership</h3>
+              <p className="text-gray-700 dark:text-gray-300">
+                We see every client relationship as a long-term collaboration, built on mutual success and shared growth.
+              </p>
+            </div>
+            <div className="bg-white dark:bg-gray-900 p-8 rounded-lg border border-gray-200 dark:border-gray-700 hover:shadow-lg dark:hover:shadow-2xl transition">
+              <FaAward className="text-4xl text-blue-600 dark:text-blue-400 mb-4" />
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Excellence</h3>
+              <p className="text-gray-700 dark:text-gray-300">
+                Every project is delivered with precision, performance, and an unrelenting pursuit of quality.
+              </p>
+            </div>
+            <div className="bg-white dark:bg-gray-900 p-8 rounded-lg border border-gray-200 dark:border-gray-700 hover:shadow-lg dark:hover:shadow-2xl transition">
+              <FaGlobe className="text-4xl text-blue-600 dark:text-blue-400 mb-4" />
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Sustainability</h3>
+              <p className="text-gray-700 dark:text-gray-300">
+                We embrace technology that contributes to sustainable, inclusive, and environmentally responsible progress.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Our Approach */}
-      <section className="py-20 bg-background-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-text-primary mb-6">Our Approach</h2>
-            <p className="text-xl text-text-secondary max-w-3xl mx-auto">
-              We follow a systematic, client-centric approach to ensure successful project delivery and lasting results.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {approach.map((step, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
-                className="bg-background-900 p-8 rounded-xl border border-primary-700 relative"
-              >
-                <div className="absolute -top-4 -left-4 w-12 h-12 bg-accent-500 rounded-full flex items-center justify-center text-background-900 font-bold text-lg">
-                  {step.step}
-                </div>
-                <h3 className="text-xl font-semibold text-text-primary mb-4 mt-4">{step.title}</h3>
-                <p className="text-text-secondary">{step.description}</p>
-              </motion.div>
-            ))}
+      {/* Our Approach Section */}
+      <section className="py-16 px-6 bg-white dark:bg-gray-900">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-12">Our Approach</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="text-center">
+              <div className="bg-blue-600 text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+                1️⃣
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Understand</h3>
+              <p className="text-gray-700 dark:text-gray-300">
+                We analyze your digital ecosystem, identify challenges, and define clear goals.
+              </p>
+            </div>
+            <div className="text-center">
+              <div className="bg-blue-600 text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+                2️⃣
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Innovate</h3>
+              <p className="text-gray-700 dark:text-gray-300">
+                Our experts design tailor-made solutions integrating AI, automation, and cloud technologies.
+              </p>
+            </div>
+            <div className="text-center">
+              <div className="bg-blue-600 text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+                3️⃣
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Secure</h3>
+              <p className="text-gray-700 dark:text-gray-300">
+                Cybersecurity is built into every layer of our process — from planning to deployment.
+              </p>
+            </div>
+            <div className="text-center">
+              <div className="bg-blue-600 text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+                4️⃣
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Evolve</h3>
+              <p className="text-gray-700 dark:text-gray-300">
+                We continuously monitor, optimize, and scale your systems to stay ahead.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Leadership Philosophy */}
-      <section className="py-20 bg-background-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-text-primary mb-6">Leadership Philosophy</h2>
-          </motion.div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <h3 className="text-2xl font-semibold text-text-primary mb-6">Empowering Through Technology</h3>
-              <div className="space-y-4 text-lg text-text-secondary">
-                <p>
-                  Our leadership philosophy centers on empowering businesses to harness the full potential of technology.
-                  We believe that the right technology, implemented correctly, can transform challenges into opportunities.
-                </p>
-                <p>
-                  We lead by example, staying ahead of technological trends and continuously investing in our team's
-                  development. Our commitment to excellence drives us to deliver solutions that not only meet today's
-                  needs but also anticipate tomorrow's challenges.
-                </p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              className="grid grid-cols-1 gap-6"
-            >
-              {[
-                "Continuous Learning",
-                "Client-Centric Focus",
-                "Innovation-Driven",
-                "Quality Excellence",
-                "Ethical Practices"
-              ].map((principle, index) => (
-                <div key={index} className="flex items-center space-x-3">
-                  <FaCheckCircle className="w-5 h-5 text-accent-500 flex-shrink-0" />
-                  <span className="text-text-primary">{principle}</span>
-                </div>
-              ))}
-            </motion.div>
+      <section className="py-16 px-6 bg-white dark:bg-gray-900">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-8">Leadership Philosophy</h2>
+          <p className="text-lg text-gray-700 dark:text-gray-300 mb-8">
+            At Insyver, leadership means enabling innovation, not controlling it. Our management philosophy 
+            empowers every team member to think independently, collaborate fearlessly, and innovate boldly.
+          </p>
+          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">We Foster a Culture of:</h3>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="flex items-center gap-4">
+              <div className="w-4 h-4 bg-blue-600 dark:bg-blue-400 rounded-full"></div>
+              <span className="text-lg text-gray-700 dark:text-gray-300 font-semibold">Continuous Learning</span>
+            </div>
+            <div className="flex items-center gap-4">
+              <div className="w-4 h-4 bg-blue-600 dark:bg-blue-400 rounded-full"></div>
+              <span className="text-lg text-gray-700 dark:text-gray-300 font-semibold">Data-Driven Decision Making</span>
+            </div>
+            <div className="flex items-center gap-4">
+              <div className="w-4 h-4 bg-blue-600 dark:bg-blue-400 rounded-full"></div>
+              <span className="text-lg text-gray-700 dark:text-gray-300 font-semibold">Customer-Centric Design</span>
+            </div>
+            <div className="flex items-center gap-4">
+              <div className="w-4 h-4 bg-blue-600 dark:bg-blue-400 rounded-full"></div>
+              <span className="text-lg text-gray-700 dark:text-gray-300 font-semibold">Technical Integrity</span>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Why Clients Trust Us */}
-      <section className="py-20 bg-background-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-text-primary mb-6">Why Clients Trust Us</h2>
-            <p className="text-xl text-text-secondary max-w-3xl mx-auto">
-              Our track record speaks for itself. Here's what makes us a preferred technology partner.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { icon: <FaAward />, title: "Proven Track Record", desc: "500+ successful projects across industries" },
-              { icon: <FaShieldAlt />, title: "Security Expertise", desc: "Certified security professionals and practices" },
-              { icon: <FaChartLine />, title: "Measurable Results", desc: "98% client satisfaction and ROI delivery" },
-              { icon: <FaHeadset />, title: "24/7 Support", desc: "Round-the-clock technical assistance" },
-              { icon: <FaUsers />, title: "Dedicated Teams", desc: "Personalized attention and account management" },
-              { icon: <FaRocket />, title: "Agile Methodology", desc: "Flexible and efficient project delivery" },
-              { icon: <FaGlobe />, title: "Global Standards", desc: "International best practices and compliance" },
-              { icon: <FaHandshake />, title: "Long-term Partnership", desc: "Building lasting relationships, not transactions" }
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
-                className="bg-background-900 p-6 rounded-xl border border-primary-700 hover:border-accent-500 transition-all duration-300 text-center"
-              >
-                <div className="text-accent-500 mb-4 text-2xl mx-auto w-fit">{item.icon}</div>
-                <h3 className="text-lg font-semibold text-text-primary mb-2">{item.title}</h3>
-                <p className="text-text-secondary text-sm">{item.desc}</p>
-              </motion.div>
-            ))}
+      <section className="py-16 px-6 bg-white dark:bg-gray-900">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-12">Why Clients Trust Us</h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="space-y-4">
+              <div className="flex items-start gap-4">
+                <span className="text-2xl">✓</span>
+                <p className="text-lg text-gray-700 dark:text-gray-300"><strong>10+ years of combined technical expertise</strong></p>
+              </div>
+              <div className="flex items-start gap-4">
+                <span className="text-2xl">✓</span>
+                <p className="text-lg text-gray-700 dark:text-gray-300"><strong>Multi-industry experience</strong> — Finance, Manufacturing, Healthcare, IT, Education</p>
+              </div>
+              <div className="flex items-start gap-4">
+                <span className="text-2xl">✓</span>
+                <p className="text-lg text-gray-700 dark:text-gray-300"><strong>ISO-aligned cybersecurity and cloud protocols</strong></p>
+              </div>
+            </div>
+            <div className="space-y-4">
+              <div className="flex items-start gap-4">
+                <span className="text-2xl">✓</span>
+                <p className="text-lg text-gray-700 dark:text-gray-300"><strong>24/7 Managed IT and Support Services</strong></p>
+              </div>
+              <div className="flex items-start gap-4">
+                <span className="text-2xl">✓</span>
+                <p className="text-lg text-gray-700 dark:text-gray-300"><strong>100% transparency and client-first communication</strong></p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Global Reach */}
-      <section className="py-20 bg-background-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-text-primary mb-6">Global Reach, Local Expertise</h2>
-            <p className="text-xl text-text-secondary max-w-3xl mx-auto">
-              While headquartered in India, we serve clients across the globe, bringing international perspectives
-              and localized expertise to every project.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="bg-background-800 p-8 rounded-xl border border-primary-700 text-center"
-            >
-              <FaGlobe className="w-12 h-12 text-accent-500 mx-auto mb-6" />
-              <h3 className="text-xl font-semibold text-text-primary mb-4">International Presence</h3>
-              <p className="text-text-secondary">
-                Serving clients in multiple countries with seamless cross-border project management and support.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.1 }}
-              className="bg-background-800 p-8 rounded-xl border border-primary-700 text-center"
-            >
-              <FaUsers className="w-12 h-12 text-accent-500 mx-auto mb-6" />
-              <h3 className="text-xl font-semibold text-text-primary mb-4">Multicultural Teams</h3>
-              <p className="text-text-secondary">
-                Diverse teams bringing global insights and cultural understanding to every client engagement.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="bg-background-800 p-8 rounded-xl border border-primary-700 text-center"
-            >
-              <FaTrophy className="w-12 h-12 text-accent-500 mx-auto mb-6" />
-              <h3 className="text-xl font-semibold text-text-primary mb-4">Industry Recognition</h3>
-              <p className="text-text-secondary">
-                Recognized for excellence in technology consulting and digital transformation services.
-              </p>
-            </motion.div>
-          </div>
+      <section className="py-16 px-6 bg-gray-50 dark:bg-gray-800">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-8">Global Reach</h2>
+          <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">
+            Though headquartered in Gurgaon, Haryana, our reach extends beyond borders.
+          </p>
+          <p className="text-lg text-gray-700 dark:text-gray-300">
+            We proudly serve clients across India, the Middle East, Europe, and North America, 
+            providing consistent, high-performance solutions to enterprises worldwide.
+          </p>
         </div>
       </section>
 
       {/* Join Our Journey CTA */}
-      <section className="py-20 bg-gradient-to-r from-primary-900 via-primary-800 to-accent-900">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-text-primary mb-6">
-              Join Our Journey
-            </h2>
-            <p className="text-xl text-text-secondary mb-8">
-              Ready to transform your business with intelligent technology solutions?
-              Let's start a conversation about your digital future.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                to="/contact"
-                className="bg-accent-500 hover:bg-accent-400 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
-              >
-                Start Your Transformation
-              </Link>
-              <Link
-                to="/services"
-                className="border-2 border-text-primary text-text-primary hover:bg-text-primary hover:text-background-900 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300"
-              >
-                Explore Our Services
-              </Link>
-            </div>
-          </motion.div>
+      <section className="bg-gradient-to-r from-blue-900 to-slate-900 dark:from-blue-950 dark:to-slate-950 text-white py-16 px-6">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-bold mb-6">Join Our Journey</h2>
+          <p className="text-xl mb-8">
+            We're constantly evolving — and we invite innovators, organizations, and partners to grow with us.
+          </p>
+          <p className="text-lg text-gray-300 mb-8">
+            Whether you're a startup building from scratch or an enterprise upgrading your infrastructure, 
+            Insyver Technologies is here to help you succeed in the digital future.
+          </p>
+          <div className="flex gap-4 flex-wrap">
+            <Link to="/contact" className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold transition">
+              Work With Us
+            </Link>
+            <Link to="/contact" className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-blue-900 px-8 py-3 rounded-lg font-semibold transition">
+              Partner With Us
+            </Link>
+          </div>
         </div>
       </section>
     </div>
   );
-};
-
-export default About;
+}

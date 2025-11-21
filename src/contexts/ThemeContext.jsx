@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState, useCallback } from 'react';
 
 const ThemeContext = createContext();
 
@@ -11,47 +11,95 @@ export const useTheme = () => {
 };
 
 export const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState('dark');
+  const [theme, setTheme] = useState('light');
+  const [mounted, setMounted] = useState(false);
 
-  useEffect(() => {
-    // Get theme from localStorage or system preference
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      setTheme(savedTheme);
-    } else {
-      // Check system preference
-      const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      setTheme(systemPrefersDark ? 'dark' : 'light');
+  // Apply theme to document with smooth transition
+  const applyTheme = useCallback((themeValue) => {
+    try {
+      const root = document.documentElement;
+      // Remove previous theme classes
+      root.classList.remove('dark', 'light');
+      // Add new theme class
+      root.classList.add(themeValue);
+      // Save to localStorage
+      localStorage.setItem('theme', themeValue);
+      // Update data attribute for easier CSS targeting
+      root.setAttribute('data-theme', themeValue);
+    } catch (error) {
+      console.error('Error applying theme:', error);
     }
   }, []);
 
+  // Initialize theme on mount
   useEffect(() => {
-    // Apply theme to document
-    const root = document.documentElement;
-    root.classList.remove('dark', 'light', 'system');
+    try {
+      // Prevent flash of unstyled content by applying theme immediately
+      const savedTheme = localStorage.getItem('theme');
+      let initialTheme = 'light';
 
-    if (theme === 'system') {
-      const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      root.classList.add(systemPrefersDark ? 'dark' : 'light');
-    } else {
-      root.classList.add(theme);
+      if (savedTheme && (savedTheme === 'light' || savedTheme === 'dark')) {
+        initialTheme = savedTheme;
+      } else {
+        // Check system preference
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        initialTheme = systemPrefersDark ? 'dark' : 'light';
+      }
+
+      // Apply immediately
+      applyTheme(initialTheme);
+      setTheme(initialTheme);
+      setMounted(true);
+    } catch (error) {
+      console.error('Error initializing theme:', error);
+      setMounted(true);
     }
+  }, [applyTheme]);
 
-    // Save to localStorage
-    localStorage.setItem('theme', theme);
-  }, [theme]);
+  // Update when theme state changes
+  useEffect(() => {
+    if (mounted) {
+      applyTheme(theme);
+    }
+  }, [theme, mounted, applyTheme]);
 
-  const toggleTheme = () => {
+  // Listen for system theme changes
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    
+    const handleChange = (e) => {
+      // Only update if user hasn't explicitly set a theme
+      const savedTheme = localStorage.getItem('theme');
+      if (!savedTheme) {
+        const newTheme = e.matches ? 'dark' : 'light';
+        setTheme(newTheme);
+      }
+    };
+
+    // Modern browsers
+    if (mediaQuery.addEventListener) {
+      mediaQuery.addEventListener('change', handleChange);
+      return () => mediaQuery.removeEventListener('change', handleChange);
+    }
+    // Legacy browsers
+    else if (mediaQuery.addListener) {
+      mediaQuery.addListener(handleChange);
+      return () => mediaQuery.removeListener(handleChange);
+    }
+  }, []);
+
+  const toggleTheme = useCallback(() => {
     setTheme(prevTheme => {
-      if (prevTheme === 'dark') return 'light';
-      if (prevTheme === 'light') return 'system';
-      return 'dark';
+      const newTheme = prevTheme === 'dark' ? 'light' : 'dark';
+      return newTheme;
     });
-  };
+  }, []);
 
   const value = {
     theme,
     toggleTheme,
+    isDark: theme === 'dark',
+    isLight: theme === 'light',
   };
 
   return (

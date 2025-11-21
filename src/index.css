@@ -1,1 +1,538 @@
-@import './styles/global.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Prevent flash of unstyled content by hiding content until theme is applied */
+html:not([data-theme]) {
+  display: none;
+}
+
+/* Base theme variables */
+:root {
+  /* Light theme by default */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f9fafb;
+  --bg-tertiary: #f3f4f6;
+  --bg-quaternary: #e5e7eb;
+  
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --text-tertiary: #6b7280;
+  --text-quaternary: #9ca3af;
+  
+  --border-primary: #e5e7eb;
+  --border-secondary: #d1d5db;
+  
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  
+  color-scheme: light;
+}
+
+/* Dark theme */
+.dark {
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-tertiary: #334155;
+  --bg-quaternary: #475569;
+  
+  --text-primary: #f8fafc;
+  --text-secondary: #e2e8f0;
+  --text-tertiary: #cbd5e1;
+  --text-quaternary: #94a3b8;
+  
+  --border-primary: #334155;
+  --border-secondary: #475569;
+  
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+  
+  color-scheme: dark;
+}
+
+/* Light theme explicit class */
+.light {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f9fafb;
+  --bg-tertiary: #f3f4f6;
+  --bg-quaternary: #e5e7eb;
+  
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --text-tertiary: #6b7280;
+  --text-quaternary: #9ca3af;
+  
+  --border-primary: #e5e7eb;
+  --border-secondary: #d1d5db;
+  
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  
+  color-scheme: light;
+}
+
+/* Smooth theme transition animation */
+html {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Custom scrollbar theme aware */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--text-quaternary);
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-tertiary);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-color: var(--text-quaternary) var(--bg-secondary);
+  scrollbar-width: thin;
+}
+
+/* Enhanced smooth transitions for theme changes */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* Theme toggle animation */
+@keyframes theme-icon-enter {
+  from {
+    opacity: 0;
+    transform: scale(0.8) rotate(-180deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+.animate-theme-icon-enter {
+  animation: theme-icon-enter 0.3s ease-out;
+}
+
+/* Component specific dark theme styling */
+
+/* Links */
+a {
+  color: #2563eb;
+  transition: color 0.3s ease;
+}
+
+.dark a {
+  color: #60a5fa;
+}
+
+a:hover {
+  color: #1d4ed8;
+}
+
+.dark a:hover {
+  color: #93c5fd;
+}
+
+/* Input fields */
+input,
+textarea,
+select {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  border-color: var(--border-primary);
+  transition: all 0.3s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.dark input:focus,
+.dark textarea:focus,
+.dark select:focus {
+  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.1);
+}
+
+/* Placeholder text */
+::placeholder {
+  color: var(--text-quaternary);
+}
+
+/* Code blocks */
+code {
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+}
+
+pre {
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+  padding: 16px;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+/* Card component theme */
+.card {
+  background-color: var(--bg-secondary);
+  border-color: var(--border-primary);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+/* Button component theme */
+button {
+  transition: all 0.3s ease;
+}
+
+/* Dividers and separators */
+hr {
+  border-color: var(--border-primary);
+}
+
+/* Selection highlight */
+::selection {
+  background-color: #2563eb;
+  color: #ffffff;
+}
+
+.dark ::selection {
+  background-color: #60a5fa;
+  color: #0f172a;
+}
+
+/* Form elements */
+input[type="checkbox"],
+input[type="radio"] {
+  accent-color: #2563eb;
+}
+
+.dark input[type="checkbox"],
+.dark input[type="radio"] {
+  accent-color: #60a5fa;
+}
+
+/* Table styling */
+table {
+  border-collapse: collapse;
+}
+
+th {
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+  border-color: var(--border-primary);
+}
+
+td {
+  border-color: var(--border-primary);
+}
+
+/* Blockquote */
+blockquote {
+  border-left-color: #2563eb;
+  color: var(--text-secondary);
+  background-color: var(--bg-tertiary);
+  padding: 12px 16px;
+  margin: 8px 0;
+  border-radius: 4px;
+}
+
+.dark blockquote {
+  border-left-color: #60a5fa;
+}
+
+/* Custom CSS variables for themes */
+:root {
+  --background-900: #0a0a0a;
+  --background-800: #1a1a1a;
+  --background-700: #2a2a2a;
+  --background-600: #3a3a3a;
+  --text-primary: #ffffff;
+  --text-secondary: #e0e0e0;
+  --accent-primary: #00d4ff;
+  --accent-secondary: #533483;
+  --shadow-primary: rgba(0, 0, 0, 0.3);
+}
+
+/* Dark theme */
+.dark {
+  --background-900: #0a0a0a;
+  --background-800: #1a1a1a;
+  --background-700: #2a2a2a;
+  --background-600: #3a3a3a;
+  --text-primary: #ffffff;
+  --text-secondary: #e0e0e0;
+  --accent-primary: #00d4ff;
+  --accent-secondary: #533483;
+  --shadow-primary: rgba(0, 0, 0, 0.3);
+}
+
+/* Light theme */
+.light {
+  --background-900: #f5f5f5;
+  --background-800: #ffffff;
+  --background-700: #e0e0e0;
+  --background-600: #cccccc;
+  --text-primary: #0a0a0a;
+  --text-secondary: #4a4a4a;
+  --accent-primary: #0f3460;
+  --accent-secondary: #1e3a8a;
+  --shadow-primary: rgba(0, 0, 0, 0.1);
+}
+
+/* System theme */
+/* Inherits from root or will be set dynamically */
+
+/* Button enhancements */
+.btn-primary {
+  background-color: #2563eb;
+  color: white;
+  font-weight: 700;
+  padding: 12px 24px;
+  border-radius: 12px;
+  box-shadow: var(--shadow-lg);
+  transition: all 0.3s ease;
+  transform: scale(1);
+}
+
+.btn-primary:hover {
+  background-color: #1d4ed8;
+  box-shadow: var(--shadow-xl);
+  transform: scale(1.05);
+}
+
+.dark .btn-primary {
+  background-color: #2563eb;
+}
+
+.dark .btn-primary:hover {
+  background-color: #1d4ed8;
+}
+
+.btn-outline {
+  border: 2px solid #2563eb;
+  color: #2563eb;
+  font-weight: 700;
+  padding: 12px 24px;
+  border-radius: 12px;
+  box-shadow: var(--shadow-lg);
+  transition: all 0.3s ease;
+  transform: scale(1);
+}
+
+.btn-outline:hover {
+  background-color: #2563eb;
+  color: white;
+  box-shadow: var(--shadow-xl);
+  transform: scale(1.05);
+}
+
+.dark .btn-outline {
+  border-color: #60a5fa;
+  color: #60a5fa;
+}
+
+.dark .btn-outline:hover {
+  background-color: #60a5fa;
+  color: #0f172a;
+}
+
+.btn-secondary {
+  background-color: #e5e7eb;
+  color: #111827;
+  font-weight: 700;
+  padding: 12px 24px;
+  border-radius: 12px;
+  box-shadow: var(--shadow-lg);
+  transition: all 0.3s ease;
+  transform: scale(1);
+}
+
+.btn-secondary:hover {
+  background-color: #d1d5db;
+  box-shadow: var(--shadow-xl);
+  transform: scale(1.05);
+}
+
+.dark .btn-secondary {
+  background-color: #475569;
+  color: white;
+}
+
+.dark .btn-secondary:hover {
+  background-color: #334155;
+}
+
+/* Card component theme */
+.card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: var(--shadow-lg);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-xl);
+}
+
+/* Input component theme */
+.input {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-primary);
+  border-radius: 12px;
+  padding: 12px 16px;
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+}
+
+.input::placeholder {
+  color: var(--text-quaternary);
+}
+
+.input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.dark .input:focus {
+  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.1);
+}
+
+/* Navbar component theme */
+.navbar {
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-xl);
+  border-bottom: 1px solid var(--border-primary);
+  transition: all 0.3s ease;
+}
+
+.dark .navbar {
+  background-color: rgba(15, 23, 42, 0.95);
+}
+
+/* Footer component theme */
+.footer {
+  background-color: var(--bg-secondary);
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
+}
+
+/* Consistent shadows */
+.shadow-soft {
+  box-shadow: var(--shadow-sm);
+}
+
+.shadow-medium {
+  box-shadow: var(--shadow-md);
+}
+
+.shadow-strong {
+  box-shadow: var(--shadow-lg);
+}
+
+/* Hover animations */
+.hover-lift {
+  will-change: transform;
+  transition: transform 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+}
+
+/* Focus enhancements */
+.focus-ring:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  border-color: #2563eb;
+}
+
+/* Responsive utilities */
+@media (max-width: 768px) {
+  .mobile-hidden {
+    display: none;
+  }
+}
+
+/* Animation utilities */
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.slide-in {
+  animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Smooth color transitions for all elements */
+@media (prefers-reduced-motion: no-preference) {
+  * {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+}

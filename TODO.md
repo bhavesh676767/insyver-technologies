@@ -1,0 +1,1 @@
+- [x] Adjust navbar to light theme at hero: semi-transparent white background with dark text for clean look

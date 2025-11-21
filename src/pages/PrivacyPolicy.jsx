@@ -1,7 +1,6 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 
-const PrivacyPolicy = () => {
+export default function PrivacyPolicy() {
   const sections = [
     {
       title: "Information We Collect",
@@ -85,97 +84,67 @@ const PrivacyPolicy = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background-900">
+    <div className="bg-white dark:bg-gray-950 transition-colors duration-300">
       {/* Hero Section */}
-      <section className="relative py-32 overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-primary-500/20 rounded-full blur-3xl animate-float"></div>
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent-500/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
-        </div>
-
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center"
-          >
-            <h1 className="text-4xl md:text-6xl font-bold text-text-primary mb-6">
-              Privacy
-              <span className="block text-accent-500">Policy</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-text-secondary mb-8 max-w-4xl mx-auto">
-              Your privacy is important to us. This policy explains how we collect, use, and protect your personal information.
-            </p>
-            <div className="text-text-secondary">
-              <p>Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
-            </div>
-          </motion.div>
+      <section className="bg-gradient-to-br from-blue-900 via-blue-800 to-slate-900 dark:from-blue-950 dark:via-blue-900 dark:to-gray-900 text-white py-20 px-6">
+        <div className="max-w-6xl mx-auto">
+          <h1 className="text-5xl font-bold mb-6">Privacy Policy</h1>
+          <p className="text-xl text-gray-300 mb-4 max-w-3xl">
+            Your privacy is important to us. This policy explains how we collect, use, and protect your personal information.
+          </p>
+          <p className="text-gray-400">
+            Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+          </p>
         </div>
       </section>
 
       {/* Privacy Policy Content */}
-      <section className="py-20 bg-background-800">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="mb-12"
-          >
-            <div className="bg-background-900 p-8 rounded-xl border border-primary-700 mb-8">
-              <h2 className="text-2xl font-bold text-text-primary mb-4">Introduction</h2>
-              <p className="text-text-secondary leading-relaxed">
-                Insyver Technologies (OPC) Pvt. Ltd. ("we," "our," or "us") is committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website, use our services, or interact with us.
-              </p>
-              <p className="text-text-secondary leading-relaxed mt-4">
-                By using our services or providing us with your information, you consent to the collection, use, and disclosure of your information as described in this Privacy Policy. If you do not agree with our policies and practices, please do not use our services.
-              </p>
-            </div>
-          </motion.div>
+      <section className="py-20 px-6 bg-white dark:bg-gray-900">
+        <div className="max-w-4xl mx-auto">
+          {/* Introduction */}
+          <div className="bg-gray-50 dark:bg-gray-800 p-8 rounded-lg border border-gray-200 dark:border-gray-700 mb-12">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Introduction</h2>
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+              Insyver Technologies (OPC) Pvt. Ltd. ("we," "our," or "us") is committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website, use our services, or interact with us.
+            </p>
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+              By using our services or providing us with your information, you consent to the collection, use, and disclosure of your information as described in this Privacy Policy. If you do not agree with our policies and practices, please do not use our services.
+            </p>
+          </div>
 
+          {/* Sections */}
           {sections.map((section, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
-              className="bg-background-900 p-8 rounded-xl border border-primary-700 mb-8"
-            >
-              <h2 className="text-2xl font-bold text-text-primary mb-6">{index + 1}. {section.title}</h2>
+            <div key={index} className="bg-gray-50 dark:bg-gray-800 p-8 rounded-lg border border-gray-200 dark:border-gray-700 mb-8">
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">{index + 1}. {section.title}</h2>
               <ul className="space-y-3">
                 {section.content.map((item, itemIndex) => (
-                  <li key={itemIndex} className="flex items-start text-text-secondary">
-                    <span className="text-accent-500 mr-3 mt-1">•</span>
+                  <li key={itemIndex} className="flex items-start text-gray-700 dark:text-gray-300">
+                    <span className="text-blue-600 dark:text-blue-400 mr-3 mt-1 font-bold">•</span>
                     <span className="leading-relaxed">{item}</span>
                   </li>
                 ))}
               </ul>
-            </motion.div>
+            </div>
           ))}
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="bg-background-900 p-8 rounded-xl border border-primary-700 mb-8"
-          >
-            <h2 className="text-2xl font-bold text-text-primary mb-6">9. Contact Us</h2>
-            <p className="text-text-secondary leading-relaxed mb-4">
+          {/* Contact Section */}
+          <div className="bg-gray-50 dark:bg-gray-800 p-8 rounded-lg border border-gray-200 dark:border-gray-700 mb-8">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">9. Contact Us</h2>
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
               If you have any questions about this Privacy Policy or our privacy practices, please contact us:
             </p>
-            <div className="bg-primary-800 p-6 rounded-lg">
+            <div className="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-lg border border-blue-200 dark:border-blue-800">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <h3 className="font-semibold text-text-primary mb-2">Insyver Technologies (OPC) Pvt. Ltd.</h3>
-                  <p className="text-text-secondary">
+                  <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Insyver Technologies (OPC) Pvt. Ltd.</h3>
+                  <p className="text-gray-700 dark:text-gray-300">
                     P. NO-02 Laxman Vihar, Phase II<br />
                     New Colony, Gurgaon - 122001<br />
                     Haryana, India
                   </p>
                 </div>
                 <div>
-                  <p className="text-text-secondary">
+                  <p className="text-gray-700 dark:text-gray-300">
                     <strong>Email:</strong> info@insyvertechnologies.com<br />
                     <strong>Phone:</strong> +91 98992 13865<br />
                     <strong>Website:</strong> www.insyvertechnologies.com
@@ -183,23 +152,17 @@ const PrivacyPolicy = () => {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="bg-accent-500/10 border border-accent-500/30 p-8 rounded-xl"
-          >
-            <h2 className="text-2xl font-bold text-text-primary mb-4">Changes to This Privacy Policy</h2>
-            <p className="text-text-secondary leading-relaxed">
+          {/* Changes Section */}
+          <div className="bg-blue-50 dark:bg-blue-900/20 p-8 rounded-lg border border-blue-200 dark:border-blue-800">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Changes to This Privacy Policy</h2>
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
               We may update this Privacy Policy from time to time to reflect changes in our practices or for other operational, legal, or regulatory reasons. We will notify you of any material changes by posting the updated Privacy Policy on our website and updating the "Last updated" date. Your continued use of our services after any such changes constitutes your acceptance of the updated Privacy Policy.
             </p>
-          </motion.div>
+          </div>
         </div>
       </section>
     </div>
   );
-};
-
-export default PrivacyPolicy;
+}
